@@ -1,0 +1,5 @@
+Flask
+Pillow
+sympy
+pix2tex[gui]
+latex2sympy2

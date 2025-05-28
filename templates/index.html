@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Math Solver con Pix2Tex</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+<body>
+    <h1>Sube una imagen con un ejercicio matemático</h1>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <input type="submit" value="Resolver">
+    </form>
+
+{% if latex %}
+    <h2>Ejercicio detectado:</h2>
+    <p>{{ latex }}</p>
+{% endif %}
+
+    {% if solution %}
+        <h2>Solución:</h2>
+        <p>$$ {{ solution }} $$</p>
+    {% endif %}
+</body>
+</html>
