@@ -6,6 +6,30 @@
     <script id="MathJax-script" async
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
     </script>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f7f9fc;
+        }
+        h1 {
+            color: #2a2a2a;
+        }
+        .result-block {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 6px;
+            box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+        }
+    </style>
 </head>
 <body>
     <h1>Sube una imagen con un ejercicio matemático</h1>
@@ -14,14 +38,25 @@
         <input type="submit" value="Resolver">
     </form>
 
-{% if latex %}
-    <h2>Ejercicio detectado:</h2>
-    <p>{{ latex }}</p>
-{% endif %}
+    {% if latex %}
+        <div class="result-block">
+            <h2>Ejercicio detectado:</h2>
+            <p>$$ {{ latex }} $$</p>
+        </div>
+    {% endif %}
 
     {% if solution %}
-        <h2>Solución:</h2>
-        <p>$$ {{ solution }} $$</p>
+        <div class="result-block">
+            <h2>Solución:</h2>
+            <p>$$ {{ solution }} $$</p>
+        </div>
+    {% endif %}
+
+    {% if plot_path %}
+        <div class="result-block">
+            <h2>Gráfica:</h2>
+            <img src="{{ plot_path }}" alt="Gráfica generada">
+        </div>
     {% endif %}
 </body>
 </html>
